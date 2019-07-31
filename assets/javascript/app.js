@@ -12,14 +12,38 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+
+
   var database = firebase.database();
-//collect info on click
 
 
+  $("body").on("click", "#submit-id" , function(event) {
+  
+  event.preventDefault();
 
-//get the input values
+  // Get the input values
+  var trainName = $( "#trainNameId" ).val().trim();
+  var destId = $( "#destId" ).val().trim();
+  var firstTrainTime = $("#firstTrainId").val().trim();
+  var freqId = $( "#freqId" ).val().trim();
 
 
+  
+  
+    
+    database.ref().push(
+
+  {
+    trainName: trainName,
+    destination: destId,
+    firstTrainTime: firstTrainTime,
+    frequency: freqId,
+    arrival: nextTrain,
+    minutesAway: minutesAway,
+  });
+
+
+  });
 
 
 
